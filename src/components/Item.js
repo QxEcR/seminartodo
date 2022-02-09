@@ -11,36 +11,40 @@ const Item = ({ id, todo, isCompleted, updateTodos }) => {
 
 	const handleComplete = () => {
 		let todos = getTodos()
-		console.log(todos)
 		todos.map((item) => {
 			if (item.id === id) {
 				item.isCompleted = !item.isCompleted
 			}
 		})
-		console.log(todos)
 		updateTodos(todos)
 	}
 
 	const handleEdit = () => {
 		let todos = getTodos()
+
 		let newTodo = prompt("Enter new todo: ")
-		if (newTodo === "") return
-		todos.map((item) => {
-			if (item.id === id) {
-				item.text = newTodo
-			}
-		})
-		updateTodos(todos)
+		if (newTodo) {
+			todos.map((item) => {
+				if (item.id === id) {
+					item.text = newTodo
+				}
+			})
+
+			updateTodos(todos)
+		}
 	}
 
 	const handleDelete = () => {
 		let todos = getTodos()
-		todos.map((item, index) => {
-			if (item.id === id) {
-				todos.splice(index, 1)
-			}
-		})
-		updateTodos(todos)
+
+		if (window.confirm("Delete the Todo?")) {
+			todos.map((item, index) => {
+				if (item.id === id) {
+					todos.splice(index, 1)
+				}
+			})
+			updateTodos(todos)
+		}
 	}
 
 	return (

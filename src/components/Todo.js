@@ -23,7 +23,6 @@ const Todo = () => {
 
 		const newTodos = [...todos, { id, text: newTodo, isCompleted: false }]
 		setTodos(newTodos)
-		console.log(newTodos)
 		localStorage.setItem("TEST_TODO_LIST", JSON.stringify(newTodos))
 
 		inputRef.current.value = ""
