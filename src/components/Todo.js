@@ -2,9 +2,10 @@ import React from "react"
 import { useState, useEffect, useRef } from "react"
 import "./Todo.css"
 import Item from "./Item"
+import { v4 as uuid } from "uuid"
 
 const Todo = () => {
-	const [todos, setTodos] = useState(() => [])
+	const [todos, setTodos] = useState([])
 
 	let inputRef = useRef()
 
@@ -19,7 +20,7 @@ const Todo = () => {
 		const newTodo = inputRef.current.value
 		if (newTodo === "") return
 
-		let id = todos.length
+		let id = uuid()
 
 		const newTodos = [...todos, { id, text: newTodo, isCompleted: false }]
 		setTodos(newTodos)
