@@ -1,6 +1,7 @@
 import React from "react"
 import { useState, useEffect, useRef } from "react"
 import "./Todo.css"
+import Item from "./Item"
 
 const Todo = () => {
 	const [todos, setTodos] = useState(() => [])
@@ -20,11 +21,17 @@ const Todo = () => {
 
 		let id = todos.length
 
-		const newTodos = [...todos, { id, text: newTodo, completed: false }]
+		const newTodos = [...todos, { id, text: newTodo, isCompleted: false }]
 		setTodos(newTodos)
+		console.log(newTodos)
 		localStorage.setItem("TEST_TODO_LIST", JSON.stringify(newTodos))
 
 		inputRef.current.value = ""
+	}
+
+	const updateTodos = (newTodos) => {
+		setTodos(newTodos)
+		localStorage.setItem("TEST_TODO_LIST", JSON.stringify(newTodos))
 	}
 
 	return (
@@ -42,12 +49,13 @@ const Todo = () => {
 
 			<div className='todosContainer'>
 				{todos.map((item) => (
-					<div className='todoElem' key={item.id}>
-						<p>{item.text}</p>
-						{/* complete todo */}
-						{/* update todo */}
-						{/* delete todo */}
-					</div>
+					<Item
+						key={item.id}
+						id={item.id}
+						todo={item.text}
+						isCompleted={item.isCompleted}
+						updateTodos={updateTodos}
+					/>
 				))}
 			</div>
 		</div>
