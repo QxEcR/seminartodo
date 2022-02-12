@@ -48,8 +48,9 @@ p {
 	left: 1em;
 }
 
-@media screen and (max-width: 480) {
+@media screen and (max-width: 380px) {
 	.todoElem {
+		width: 20em;
 		margin-left: 1em;
 		margin-right: 1em;
 	}

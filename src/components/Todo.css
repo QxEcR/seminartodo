@@ -36,3 +36,12 @@
 	justify-content: center;
 	padding-top: 40px;
 }
+
+@media screen and (max-width: 380px) {
+	.todo-input-field {
+		width: 250px;
+	}
+	.todo-input-btn {
+		width: 80px;
+	}
+}
