@@ -1,1 +1,1 @@
-#### a demo project for a seminar on ReactJS
+### a demo project for a seminar on ReactJS
